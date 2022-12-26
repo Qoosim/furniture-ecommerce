@@ -1,0 +1,120 @@
+.heroSection {
+  background: var(--hero-bg);
+}
+
+.heroContent {
+  padding-top: 40px;
+}
+
+.heroContent h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 20px 0px;
+}
+
+.heroContent p {
+  color: var(--primary-color);
+  line-height: 28px;
+}
+
+.heroContent p:nth-child(1) {
+  font-weight: 500;
+}
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buyBtn a:hover {
+  color: #fff;
+}
+
+.sectionTitle {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.timerCount {
+  background: var(--primary-color);
+  height: 300px;
+}
+
+.timerCount img {
+  width: 70% !important;
+  height: 70% !important;
+  object-fit: contain;
+}
+
+.storeBtn {
+  background: #fff;
+  color: var(--primary-color);
+}
+
+.storeBtn a:hover {
+  color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+  .heroContent h2 {
+    font-size: 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.7rem;
+  }
+
+  .counterImg {
+    display: none;
+  }
+
+  .clockTopContent {
+    text-align: center;
+  }
+
+  .clockTopContent h3 {
+    font-size: 0.9rem !important;
+  }
+
+  .clockTopContent h4 {
+    font-size: 1rem !important;
+  }
+
+  .countDownCol {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent h2 {
+    font-size: 1.6rem;
+  }
+
+  .heroContent p {
+    font-size: 0.9rem;
+  }
+
+  .buyBtn a {
+    font-size: 0.9rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.4rem;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .heroContent {
+    padding-top: 0;
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,13 @@
+@media (max-width: 992px) {
+  .clockWrapper {
+    justify-content: center;
+  }
+
+  .clockData h1 {
+    font-size: 1.1rem !important;
+  }
+
+  .clockData h5 {
+    font-size: 0.9rem !important;
+  }
+}
