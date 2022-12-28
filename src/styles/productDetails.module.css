@@ -1,0 +1,40 @@
+.productDetails {
+  margin-top: 50px;
+}
+
+.productDetails h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+.productRating span i {
+  color: coral;
+}
+
+.productRating p span {
+  color: coral;
+  font-weight: 500;
+}
+
+.productPrice {
+  font-size: 1.3rem;
+}
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}

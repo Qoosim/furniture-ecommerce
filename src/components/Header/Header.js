@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styles from './header.module.css';
 import { motion } from 'framer-motion';
 import { Container, Row } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
@@ -38,12 +38,14 @@ const Header = () => {
       <Container>
         <Row>
           <div className={styles.navWrapper}>
-            <div className={styles.logo}>
-              <img src={logo} alt="logo" />
-              <div>
-                <h1>Multimart</h1>
+            <Link to="/home">
+              <div className={styles.logo}>
+                <img src={logo} alt="logo" />
+                <div>
+                  <h1>Multimart</h1>
+                </div>
               </div>
-            </div>
+            </Link>
             <div className={styles.navigation} ref={menuRef} onClick={menuToggle}>
               <ul className={styles.menu}>
                 {
