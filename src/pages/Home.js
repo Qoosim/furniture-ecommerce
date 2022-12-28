@@ -55,7 +55,7 @@ const Home = () => {
                 <p className={styles.homeHeroSubtitle}>
                   Trending product in {year}
                 </p>
-                <h2>Make your interior more minimalistic & modern</h2>
+                <h2>We help turn your house into a home</h2>
                 <p>
                   Lorem in doloremque in placeat repudiandae! Totam reiciendis
                   commodi facilis adipisci necessitatibus. Voluptatem nulla
