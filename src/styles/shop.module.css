@@ -37,3 +37,9 @@
 .searchBox span {
   color: var(--primary-color);
 }
+
+@media (max-width: 768px) {
+  .filterWidget {
+    margin-bottom: 30px;
+  }
+}

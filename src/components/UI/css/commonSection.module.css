@@ -12,3 +12,13 @@
   color: #fff;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .commonSection {
+    padding: 8px 0px;
+  }
+
+  .commonSection h1 {
+    font-size: 1.4rem;
+  }
+}
