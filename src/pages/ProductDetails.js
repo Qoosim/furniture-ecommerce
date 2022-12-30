@@ -42,6 +42,7 @@ const ProductDetails = () => {
     }
 
     console.log(reviewObj);
+    toast.success('Review submitted');
 
   }
 
@@ -157,20 +158,36 @@ const ProductDetails = () => {
                           </div>
                           <div className={`${styles.formGroup} ${styles.ratingGroup}
                           d-flex align-items-center gap-4`}>
-                            <span onClick={() => setRating(1)}>
+                            <motion.span
+                              whileTap={{ scale: 1.2 }}
+                              onClick={() => setRating(1)}
+                            >
                                 1<i className="ri-star-s-fill"></i>
-                            </span>
-                            <span onClick={() => setRating(2)}>
-                              2<i className="ri-star-s-fill"></i></span>
-                            <span onClick={() => setRating(3)}>
+                            </motion.span>
+                            <motion.span
+                              whileTap={{ scale: 1.2 }}
+                              onClick={() => setRating(2)}
+                            >
+                              2<i className="ri-star-s-fill"></i>
+                            </motion.span>
+                            <motion.span
+                              whileTap={{ scale: 1.2 }}
+                              onClick={() => setRating(3)}
+                            >
                               3<i className="ri-star-s-fill"></i>
-                            </span>
-                            <span onClick={() => setRating(4)}>
+                            </motion.span>
+                            <motion.span
+                              whileTap={{ scale: 1.2 }}
+                              onClick={() => setRating(4)}
+                            >
                               4<i className="ri-star-s-fill"></i>
-                            </span>
-                            <span onClick={() => setRating(5)}>
+                            </motion.span>
+                            <motion.span
+                              whileTap={{ scale: 1.2 }}
+                              onClick={() => setRating(5)}
+                            >
                               5<i className="ri-star-s-fill"></i>
-                            </span>
+                            </motion.span>
                           </div>
                           <div className={styles.formGroup}>
                             <textarea
@@ -180,7 +197,12 @@ const ProductDetails = () => {
                               placeholder='Review Message...'
                             />
                           </div>
-                          <button type="submit" className={styles.buyBtn}>Submit</button>
+                          <motion.button
+                            whileTap={{ scale: 1.2 }}
+                            type="submit" className={styles.buyBtn}
+                          >
+                            Submit
+                          </motion.button>
                         </form>
                       </div>
                     </div>
