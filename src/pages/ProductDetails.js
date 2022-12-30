@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
@@ -34,6 +34,15 @@ const ProductDetails = () => {
 
     const reviewUserName = reviewUser.current.value;
     const reviewUserMsg = reviewMsg.current.value;
+
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating
+    }
+
+    console.log(reviewObj);
+
   }
 
   const addToCart = () => {
@@ -45,6 +54,10 @@ const ProductDetails = () => {
     }))
     toast.success('Product added successfully');
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [product])
 
   return (
     <Helmet title={productName}>
@@ -61,19 +74,19 @@ const ProductDetails = () => {
                 <h2>{ productName }</h2>
                 <div className={styles.productRating}>
                   <div>
-                    <span onClick={() => setRating(1)}>
+                    <span>
                       <i className="ri-star-s-fill"></i>
                     </span>
-                    <span onClick={() => setRating(2)}>
+                    <span>
                       <i className="ri-star-s-fill"></i>
                     </span>
-                    <span onClick={() => setRating(3)}>
+                    <span>
                       <i className="ri-star-s-fill"></i>
                     </span>
-                    <span onClick={() => setRating(4)}>
+                    <span>
                       <i className="ri-star-s-fill"></i>
                     </span>
-                    <span onClick={() => setRating(5)}>
+                    <span>
                       <i className="ri-star-half-s-line"></i>
                     </span>
                   </div>
@@ -142,14 +155,22 @@ const ProductDetails = () => {
                               placeholder='Enter name'
                             />
                           </div>
-                          <div
-                            className={`${styles.formGroup} d-flex align-items-center gap-4`}
-                          >
-                            <span>1 <i className="ri-star-s-fill"></i></span>
-                            <span>2 <i className="ri-star-s-fill"></i></span>
-                            <span>3 <i className="ri-star-s-fill"></i></span>
-                            <span>4 <i className="ri-star-s-fill"></i></span>
-                            <span>5 <i className="ri-star-s-fill"></i></span>
+                          <div className={`${styles.formGroup} ${styles.ratingGroup}
+                          d-flex align-items-center gap-4`}>
+                            <span onClick={() => setRating(1)}>
+                                1<i className="ri-star-s-fill"></i>
+                            </span>
+                            <span onClick={() => setRating(2)}>
+                              2<i className="ri-star-s-fill"></i></span>
+                            <span onClick={() => setRating(3)}>
+                              3<i className="ri-star-s-fill"></i>
+                            </span>
+                            <span onClick={() => setRating(4)}>
+                              4<i className="ri-star-s-fill"></i>
+                            </span>
+                            <span onClick={() => setRating(5)}>
+                              5<i className="ri-star-s-fill"></i>
+                            </span>
                           </div>
                           <div className={styles.formGroup}>
                             <textarea

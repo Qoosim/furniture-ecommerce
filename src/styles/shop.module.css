@@ -42,4 +42,8 @@
   .filterWidget {
     margin-bottom: 30px;
   }
+
+  .filterWidget select {
+    padding: 7px 20px;
+  }
 }
