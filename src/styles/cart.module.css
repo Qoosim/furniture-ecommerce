@@ -7,3 +7,20 @@
 td i {
   cursor: pointer;
 }
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buyBtn a:hover {
+  color: #fff;
+}
+
