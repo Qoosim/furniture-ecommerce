@@ -1,19 +1,18 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
-import tdImg from '../assets/images/arm-chair-01.jpg';
 import styles from '../styles/cart.module.css';
-import { motion } from 'framer-motion';
-//import { cartActions } from '../redux/slices/CartSlice';
-
+import SingleCartRow from './SingleCartRow';
 
 const Cart = () => {
 
   const cartProducts = useSelector((state) => state.cart.cartProducts)
 
-  console.log(cartProducts);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <Helmet title="Cart">
@@ -25,7 +24,7 @@ const Cart = () => {
             <Col lg='9'>
               {
                 cartProducts.length === 0 ? (
-                  <h2 className='fs-4 text-center'>No product added to the cart</h2>
+                  <h2 className='fs-4 text-center'>No product in the cart</h2>
                 ) : (
                   <table className={`${styles.table} table bordered`}>
                     <thead>
@@ -38,13 +37,11 @@ const Cart = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td><img src={tdImg} alt="Arm Chair" /></td>
-                        <td>Modern Arm Chair</td>
-                        <td>$299</td>
-                        <td>2px</td>
-                        <td><i className="ri-delete-bin-line"></i></td>
-                      </tr>
+                      {
+                        cartProducts.map((product, index) => (
+                          <SingleCartRow product={product} key={index} />
+                        ))
+                      }
                     </tbody>
                   </table>
                 )
@@ -57,5 +54,6 @@ const Cart = () => {
     </Helmet>
   )
 }
+
 
 export default Cart;

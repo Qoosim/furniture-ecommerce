@@ -41,7 +41,6 @@ const ProductDetails = () => {
       rating
     }
 
-    console.log(reviewObj);
     toast.success('Review submitted');
 
   }
@@ -49,7 +48,7 @@ const ProductDetails = () => {
   const addToCart = () => {
     dispatch(cartActions.addItem({
       id,
-      image: imgUrl,
+      imgUrl,
       productName,
       price,
     }))
@@ -138,13 +137,15 @@ const ProductDetails = () => {
                   <div className={`${styles.productReview} mt-5`}>
                     <div className={styles.reviewWrapper}>
                       <ul>
-                        {reviews?.map((item, index) => (
-                          <li key={index} className='mb-4'>
-                            <h6>Qoosim Abdul</h6>
-                            <span>{item.rating} (averge rating)</span>
-                            <p>{item.text}</p>
-                          </li>
-                        ))}
+                        {
+                          reviews?.map((item, index) => (
+                            <li key={index} className='mb-4'>
+                              <h6>Qoosim Abdul</h6>
+                              <span>{item.rating} (averge rating)</span>
+                              <p>{item.text}</p>
+                            </li>
+                          ))
+                        }
                       </ul>
                       <div className={styles.reviewForm}>
                         <form action="" onSubmit={handleSubmit}>
