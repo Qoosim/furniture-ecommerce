@@ -154,6 +154,7 @@ const ProductDetails = () => {
                               ref={reviewUser}
                               type="text"
                               placeholder='Enter name'
+                              required
                             />
                           </div>
                           <div className={`${styles.formGroup} ${styles.ratingGroup}
@@ -195,6 +196,7 @@ const ProductDetails = () => {
                               rows={4}
                               type="text"
                               placeholder='Review Message...'
+                              required
                             />
                           </div>
                           <motion.button
