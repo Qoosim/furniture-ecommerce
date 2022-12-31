@@ -1,0 +1,45 @@
+.billingForm .formGroup input {
+  width: 100% !important;
+  padding: 7px 10px !important;
+  border-radius: 5px;
+  border: 1px solid var(--card-bg-02);
+}
+
+.checkoutCart {
+  padding: 20px;
+  background: var(--primary-color);
+  border-radius: 5px;
+  color: #fff;
+}
+
+.checkoutCart h4, h6 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutCart h4 {
+  border-top: 1px solid rgba(221, 221, 221, 0.253);
+  padding-top: 20px;
+}
+
+.checkoutCart h6 {
+  margin-bottom: 20px;
+}
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  #background: var(--primary-color);
+  #color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buyBtn a:hover {
+  color: #fff;
+}
+
