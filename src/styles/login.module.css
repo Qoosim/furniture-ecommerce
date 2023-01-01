@@ -1,0 +1,46 @@
+.authForm input {
+  width: 100% !important;
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+.authForm {
+  background: var(--primary-color);
+  padding: 40px;
+  border-radius: 5px;
+}
+
+.authForm p {
+  margin-top: 30px;
+}
+
+.authForm p a {
+  color: rgba(255, 255, 255, 0.735);
+}
+
+.authBtn {
+  background: #fff !important;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  #color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buyBtn a:hover {
+  color: #fff;
+}
+
+.authForm input[type='file'] {
+  color: #fff;
+  cursor: pointer;
+}
