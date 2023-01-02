@@ -127,7 +127,7 @@ const Signup = () => {
                 </Col>
               )
             }
-                      </Row>
+          </Row>
         </Container>
       </section>
     </Helmet>
