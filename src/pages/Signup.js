@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
-import { auth } from "../firebase.config.js";
-import { storage } from "../firebase.config.js";
-import { db } from "../firebase.config.js";
+import { auth } from "../firebase.config";
+import { storage } from "../firebase.config";
+import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 
 const Signup = () => {
@@ -33,7 +33,7 @@ const Signup = () => {
 
       const user = userCredential.user;
 
-      const storageRef = ref(storage, `images/${Date.now() + username}`);
+      const storageRef = await ref(storage, `images/${Date.now() + username}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         (error) => {
@@ -60,7 +60,6 @@ const Signup = () => {
       setLoading(false);
       toast.success('Account created successfully');
       navigate('/login');
-      console.log(user);
 
     } catch (error) {
       setLoading(false);
