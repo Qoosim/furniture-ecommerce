@@ -54,6 +54,7 @@ Give a ⭐️ if you like this project!
 
 ## 👏 Acknowledgments
 
+- Many thanks to my Microverse mentor - Noer Paanakker for guiding all the time :bow
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
