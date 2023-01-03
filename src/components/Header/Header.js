@@ -7,6 +7,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
+import useAuth from '../../custom-hooks/useAuth';
 
 const Header = () => {
 
@@ -14,7 +15,10 @@ const Header = () => {
 
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const profileActionRef = useRef();
   const navigate = useNavigate();
+
+  const { currentUser } = useAuth();
 
 
   const headerSticky = () => {
@@ -38,6 +42,8 @@ const Header = () => {
   })
 
   const menuToggle = () => menuRef.current.classList.toggle(`${styles.activeMenu}`);
+
+  const toggleProfileActions = () => profileActionRef.current.classList.toggle(`${styles.showProfileActions}`);
 
   return (
     <header className={styles.header} ref={headerRef}>
@@ -79,9 +85,30 @@ const Header = () => {
                 <i className="ri-shopping-cart-2-line"></i>
                 <span className={styles.badge}>{totalQuantity}</span>
               </span>
-              <span>
-                <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="user icon" />
-              </span>
+              <div className={styles.profile}>
+                <motion.img
+                  whileTap={{ scale: 1.2 }}
+                  src={currentUser ? currentUser.photoURL : userIcon}
+                  alt="user icon"
+                  onClick={toggleProfileActions}
+                />
+                <div
+                  ref={profileActionRef}
+                  className={styles.profileActions} 
+                  onClick={toggleProfileActions}
+                >
+                  {
+                    currentUser ? (
+                      <span>Logout</span>
+                    ) : (
+                      <div>
+                      <Link to='/signup'>Sign up</Link>
+                      <Link to='/login'>Login</Link>
+                      </div>
+                    )
+                  }
+                </div>
+              </div>
             </div>
             <div className={styles.mobileMenu}>
               <span onClick={menuToggle}><i className="ri-menu-line"></i></span>

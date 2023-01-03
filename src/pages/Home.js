@@ -43,7 +43,7 @@ const Home = () => {
     setMobileProducts(filteredMobileProducts);
     setWirelessProducts(filteredWirelessProducts);
     setPopularProducts(filteredPopularProducts);
-  }, []);
+  }, [trendingProducts, bestSalesProducts, mobileProducts, wirelessProducts, popularProducts]);
 
   return (
     <Helmet title="Home">

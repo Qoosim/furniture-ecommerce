@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 const ProductDetails = () => {
 
   const [tab, setTab] = useState('desc');
-  const [rating, setRating] = useState(null);
+  const [setRating] = useState(null);
 
   const reviewUser = useRef('');
   const reviewMsg = useRef('');
@@ -32,14 +32,14 @@ const ProductDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const reviewUserName = reviewUser.current.value;
-    const reviewUserMsg = reviewMsg.current.value;
+    //const reviewUserName = reviewUser.current.value;
+    //const reviewUserMsg = reviewMsg.current.value;
 
-    const reviewObj = {
-      userName: reviewUserName,
-      text: reviewUserMsg,
-      rating
-    }
+    //const reviewObj = {
+     // userName: reviewUserName,
+      //text: reviewUserMsg,
+      //rating
+    //}
 
     toast.success('Review submitted');
 
