@@ -16,7 +16,7 @@
 - Framer-motion
 
 ## 🖥️ Live Demo
-[Demo](https://furniture-ecommerce2022.netlify.app/):point_left:
+[Demo](https://furniture-ecommerce-2022.vercel.app/):point_left:
 
 ## 🖥️ Getting Started
 To get a local version up and running on your machine, follow these simple example steps.
