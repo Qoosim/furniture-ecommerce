@@ -15,7 +15,7 @@ const Header = () => {
 
   const headerRef = useRef(null);
   const menuRef = useRef(null);
-  const profileActionRef = useRef();
+  const profileActionRef = useRef(null);
   const navigate = useNavigate();
 
   const { currentUser } = useAuth();
@@ -91,22 +91,20 @@ const Header = () => {
                   src={currentUser ? currentUser.photoURL : userIcon}
                   alt="user icon"
                   onClick={toggleProfileActions}
+                  ref={profileActionRef}
                 />
                 <div
-                  ref={profileActionRef}
                   className={styles.profileActions} 
                   onClick={toggleProfileActions}
                 >
-                  {
-                    currentUser ? (
+                  {currentUser ? (
                       <span>Logout</span>
                     ) : (
                       <div>
-                      <Link to='/signup'>Sign up</Link>
-                      <Link to='/login'>Login</Link>
+                        <Link to='/signup'>Sign up</Link>
+                        <Link to='/login'>Login</Link>
                       </div>
-                    )
-                  }
+                    )}
                 </div>
               </div>
             </div>
