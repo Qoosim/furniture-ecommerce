@@ -91,10 +91,10 @@ const Header = () => {
                   src={currentUser ? currentUser.photoURL : userIcon}
                   alt="user icon"
                   onClick={toggleProfileActions}
-                  ref={profileActionRef}
                 />
                 <div
                   className={styles.profileActions} 
+                  ref={profileActionRef}
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (

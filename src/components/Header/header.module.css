@@ -79,6 +79,7 @@
   align-items: center;
   flex-direction: column;
   background: var(--card-bg-01);
+  display: none;
   line-height: 30px;
   cursor: pointer;
 }
