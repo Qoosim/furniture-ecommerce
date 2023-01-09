@@ -1,0 +1,80 @@
+.adminHeader {
+  width: 100%;
+  padding: 20px 0px;
+  background: var(--primary-color);
+}
+
+.adminNavTop {
+  width: 100%;
+}
+
+.adminNavWrapperTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 3rem;
+}
+
+.adminNavTopRight {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.adminNavTopRight img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.adminNavTopRight span i {
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.adminNavWrapperTop .searchBox {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adminNavWrapperTop .searchBox input {
+  width: 100%;
+  text-indent: 10px;
+}
+
+.adminNavWrapperTop .logo h2 {
+  font-size: 1.2rem;
+  color: whitesmoke;
+}
+
+.adminMenu {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  background: var(--card-bg-02);
+}
+
+.adminNavigation {
+  text-align: center;
+}
+
+.adminMenuList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2.7rem;
+}
+
+.adminMenuList .adminMenuItem a {
+  color: var(--primary-color);
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.activeAdminMenu {
+  background: whitesmoke;
+}

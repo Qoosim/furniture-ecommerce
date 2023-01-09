@@ -8,6 +8,9 @@ import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
 import useAuth from '../../custom-hooks/useAuth';
+import { toast } from 'react-toastify';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase.config';
 
 const Header = () => {
 
@@ -23,7 +26,9 @@ const Header = () => {
 
   const headerSticky = () => {
     window.addEventListener('scroll', () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      if (document.body.scrollTop > 80 ||
+          document.documentElement.scrollTop > 80
+      ) {
         headerRef.current.classList.add(`${styles.stickyHeader}`);
       } else {
         headerRef.current.classList.remove(`${styles.stickyHeader}`);
@@ -33,6 +38,15 @@ const Header = () => {
 
   const navigateToCart = () => {
     navigate('/cart');
+  }
+
+  const logout = () => {
+    signOut(auth).then(() => {
+      toast.success('Logged out');
+      navigate('/home');
+    }).catch((err) => {
+      toast.error(err.message);
+    })
   }
 
   useEffect(() => {
@@ -98,11 +112,14 @@ const Header = () => {
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (
-                      <span>Logout</span>
+                      <span onClick={logout}>Logout</span>
                     ) : (
-                      <div>
+                      <div className={`
+                        d-flex align-items-center justify-content-center flex-column
+                      `}>
                         <Link to='/signup'>Sign up</Link>
                         <Link to='/login'>Login</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
                       </div>
                     )}
                 </div>
