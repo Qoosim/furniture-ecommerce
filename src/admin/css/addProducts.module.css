@@ -1,0 +1,36 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup span {
+  color: #FF4C4C; 
+}
+
+.formGroup input {
+  padding: 5px 0px;
+  text-indent: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+.formGroup select {
+  padding: 5px 0px;
+  border-radius: 5px;
+}
+
+.buyBtn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.buyBtn a:hover {
+  color: #fff;
+}
