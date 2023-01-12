@@ -35,7 +35,7 @@ const AddProducts = () => {
     // ===== Add product to the firebase database ====
 
     try {
-      const docRef = await collection(db, 'product');
+      const docRef = collection(db, 'product');
       const storageRef = ref(storage, `productImages/${Date.now() + enterProductImg.name}`);
       const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
 
@@ -81,7 +81,7 @@ const AddProducts = () => {
                       value={enterTitle}
                       onChange={(e) => setEnterTitle(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <FormGroup className={styles.formGroup}>
                     <span>Short Description</span>
@@ -91,7 +91,7 @@ const AddProducts = () => {
                       value={enterShortDesc}
                       onChange={(e) => setEnterShortDesc(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <FormGroup className={styles.formGroup}>
                     <span>Description</span>
@@ -101,7 +101,7 @@ const AddProducts = () => {
                       value={enterDescription}
                       onChange={(e) => setEnterDescription(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <div className="d-flex align-items-center justify-content-between gap-5">
                     <FormGroup className={`${styles.formGroup} w-50`}>
@@ -112,7 +112,7 @@ const AddProducts = () => {
                         value={enterPrice}
                         onChange={(e) => setEnterPrice(e.target.value)}
                         required
-                      /> 
+                      />
                     </FormGroup>
                     <FormGroup className={`${styles.formGroup} w-50`}>
                       <span>Category</span>
@@ -137,7 +137,7 @@ const AddProducts = () => {
                         type="file"
                         onChange={(e) => setEnterProductImg(e.target.files[0])}
                         required
-                      /> 
+                      />
                     </FormGroup>
                   </div>
                   <button type="submit" className={styles.buyBtn}>Add Product</button>
