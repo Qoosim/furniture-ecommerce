@@ -1,17 +1,20 @@
-import React from 'react';
-import styles from './css/allProduct.module.css';
-import { Container, Row, Col } from 'reactstrap';
-import useGetData from '../custom-hooks/useGetData';
+import React from "react"
+import { Col, Container, Row } from "reactstrap"
+import useGetData from "../custom-hooks/useGetData"
+import styles from "./css/allProduct.module.css"
 
 const AllProducts = () => {
+  const { data: productsData, loading } = useGetData("product")
 
-  const { data: productsData } = useGetData('products');
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <section>
       <Container>
         <Row>
-          <Col lg='12'>
+          <Col lg="12">
             <table className="table">
               <thead>
                 <tr>
@@ -23,17 +26,19 @@ const AllProducts = () => {
                 </tr>
               </thead>
               <tbody>
-                {
-                  productsData.map((item) => (
-                   <tr className={styles.productRow} key={item.id}>
-                    <td><img src={item.imgUrl} alt={item.title} /></td>
+                {productsData.map((item) => (
+                  <tr className={styles.productRow} key={item.id}>
+                    <td>
+                      <img src={item.imgUrl} alt={item.title} />
+                    </td>
                     <td>{item.title}</td>
                     <td>{item.category}</td>
                     <td>${item.price}</td>
-                    <td><button className="btn btn-danger">Delete</button></td>
+                    <td>
+                      <button className="btn btn-danger">Delete</button>
+                    </td>
                   </tr>
-                  ))
-                }
+                ))}
               </tbody>
             </table>
           </Col>
@@ -43,4 +48,4 @@ const AllProducts = () => {
   )
 }
 
-export default AllProducts;
+export default AllProducts

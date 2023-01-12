@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
-import styles from './css/addProducts.module.css';
-import { toast } from 'react-toastify';
-import { db, storage } from '../firebase.config';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { addDoc, collection } from "firebase/firestore"
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
+import { Col, Container, Form, FormGroup, Row } from "reactstrap"
+import { db, storage } from "../firebase.config"
+import styles from "./css/addProducts.module.css"
 
 const AddProducts = () => {
+  const [enterTitle, setEnterTitle] = useState("")
+  const [enterShortDesc, setEnterShortDesc] = useState("")
+  const [enterDescription, setEnterDescription] = useState("")
+  const [enterCategory, setEnterCategory] = useState("")
+  const [enterPrice, setEnterPrice] = useState("")
+  const [enterProductImg, setEnterProductImg] = useState(null)
+  const [loading, setLoading] = useState(false)
 
-  const [enterTitle, setEnterTitle] = useState('');
-  const [enterShortDesc, setEnterShortDesc] = useState('');
-  const [enterDescription, setEnterDescription] = useState('');
-  const [enterCategory, setEnterCategory] = useState('');
-  const [enterPrice, setEnterPrice] = useState('');
-  const [enterProductImg, setEnterProductImg] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const addProduct = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
     /*
     const product = {
       title: enterTitle,
@@ -35,30 +34,39 @@ const AddProducts = () => {
     // ===== Add product to the firebase database ====
 
     try {
-      const docRef = await collection(db, 'product');
-      const storageRef = ref(storage, `productImages/${Date.now() + enterProductImg.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
+      const docRef = collection(db, "product")
+      const storageRef = ref(
+        storage,
+        `productImages/${Date.now() + enterProductImg.name}`
+      )
+      const uploadTask = uploadBytesResumable(storageRef, enterProductImg)
 
-      uploadTask.on(() => {
-        toast.error('Image not uploaded');
-      }, () => {
-        getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-          await addDoc(docRef, {
+      uploadTask.on(
+        () => {
+          toast.error("Image not uploaded")
+        },
+        async () => {
+          const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref)
+
+          const result = await addDoc(docRef, {
             title: enterTitle,
             shortDesc: enterShortDesc,
             description: enterDescription,
             category: enterCategory,
             price: enterPrice,
-            imgUrl: downloadURL
+            imgUrl: downloadUrl,
           })
-        })
-      })
-      setLoading(false);
-      toast.success('Product successfully added!');
-      navigate('/dashboard/all-products');
+
+          return result
+        }
+      )
+
+      setLoading(false)
+      toast.success("Product successfully added!")
+      navigate("/dashboard/all-products")
     } catch (err) {
-      setLoading(false);
-      toast.error('Product not added!');
+      setLoading(false)
+      toast.error("Product not added!")
     }
   }
 
@@ -66,7 +74,7 @@ const AddProducts = () => {
     <section>
       <Container>
         <Row>
-          <Col lg='12'>
+          <Col lg="12">
             {loading ? (
               <h4 className="py-5">Loading...</h4>
             ) : (
@@ -81,7 +89,7 @@ const AddProducts = () => {
                       value={enterTitle}
                       onChange={(e) => setEnterTitle(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <FormGroup className={styles.formGroup}>
                     <span>Short Description</span>
@@ -91,7 +99,7 @@ const AddProducts = () => {
                       value={enterShortDesc}
                       onChange={(e) => setEnterShortDesc(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <FormGroup className={styles.formGroup}>
                     <span>Description</span>
@@ -101,7 +109,7 @@ const AddProducts = () => {
                       value={enterDescription}
                       onChange={(e) => setEnterDescription(e.target.value)}
                       required
-                    /> 
+                    />
                   </FormGroup>
                   <div className="d-flex align-items-center justify-content-between gap-5">
                     <FormGroup className={`${styles.formGroup} w-50`}>
@@ -112,7 +120,7 @@ const AddProducts = () => {
                         value={enterPrice}
                         onChange={(e) => setEnterPrice(e.target.value)}
                         required
-                      /> 
+                      />
                     </FormGroup>
                     <FormGroup className={`${styles.formGroup} w-50`}>
                       <span>Category</span>
@@ -137,10 +145,12 @@ const AddProducts = () => {
                         type="file"
                         onChange={(e) => setEnterProductImg(e.target.files[0])}
                         required
-                      /> 
+                      />
                     </FormGroup>
                   </div>
-                  <button type="submit" className={styles.buyBtn}>Add Product</button>
+                  <button type="submit" className={styles.buyBtn}>
+                    Add Product
+                  </button>
                 </Form>
               </>
             )}
@@ -151,4 +161,4 @@ const AddProducts = () => {
   )
 }
 
-export default AddProducts;
+export default AddProducts

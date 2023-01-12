@@ -1,49 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import products from "../assets/data/products";
-import Helmet from "../components/Helmet/Helmet";
-import { Col, Container, Row } from "reactstrap";
-import styles from "../styles/home.module.css";
-import heroImg from "../assets/images/hero-img.png";
-import counterImg from "../assets/images/counter-timer-img.png";
-import Services from "../components/Services/Services";
-import ProductsList from "../components/UI/ProductsList";
-import Clock from "../components/UI/Clock";
-import serviceData from '../assets/data/serviceData';
+import { motion } from "framer-motion"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { Col, Container, Row } from "reactstrap"
+import products from "../assets/data/products"
+import serviceData from "../assets/data/serviceData"
+import counterImg from "../assets/images/counter-timer-img.png"
+import heroImg from "../assets/images/hero-img.png"
+import Helmet from "../components/Helmet/Helmet"
+import Services from "../components/Services/Services"
+import Clock from "../components/UI/Clock"
+import ProductsList from "../components/UI/ProductsList"
+import styles from "../styles/home.module.css"
 
 const Home = () => {
-  const [trendingProducts, setTrendingProducts] = useState(products);
-  const [bestSalesProducts, setBestSalesProducts] = useState(products);
-  const [mobileProducts, setMobileProducts] = useState(products);
-  const [wirelessProducts, setWirelessProducts] = useState(products);
-  const [popularProducts, setPopularProducts] = useState(products);
+  // TODO: Extract filtering into util function
+  const [trendingProducts, setTrendingProducts] = useState(
+    products.filter((item) => item.category === "chair")
+  )
+  const [bestSalesProducts, setBestSalesProducts] = useState(
+    products.filter((item) => item.category === "sofa")
+  )
+  const [mobileProducts, setMobileProducts] = useState(
+    products.filter((item) => item.category === "mobile")
+  )
+  const [wirelessProducts, setWirelessProducts] = useState(
+    products.filter((item) => item.category === "wireless")
+  )
+  const [popularProducts, setPopularProducts] = useState(
+    products.filter((item) => item.category === "watch")
+  )
 
-  const year = new Date().getFullYear();
-
-  useEffect(() => {
-    const filteredTrendingProducts = trendingProducts.filter(
-      (item) => item.category === "chair"
-    );
-    const filteredBestSalesProducts = bestSalesProducts.filter(
-      (item) => item.category === "sofa"
-    );
-    const filteredMobileProducts = mobileProducts.filter(
-      (item) => item.category === "mobile"
-    );
-    const filteredWirelessProducts = wirelessProducts.filter(
-      (item) => item.category === "wireless"
-    );
-    const filteredPopularProducts = popularProducts.filter(
-      (item) => item.category === "watch"
-    );
-
-    setTrendingProducts(filteredTrendingProducts);
-    setBestSalesProducts(filteredBestSalesProducts);
-    setMobileProducts(filteredMobileProducts);
-    setWirelessProducts(filteredWirelessProducts);
-    setPopularProducts(filteredPopularProducts);
-  }, [trendingProducts, bestSalesProducts, mobileProducts, wirelessProducts, popularProducts]);
+  const year = new Date().getFullYear()
 
   return (
     <Helmet title="Home">
@@ -142,7 +129,7 @@ const Home = () => {
         </Container>
       </section>
     </Helmet>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
