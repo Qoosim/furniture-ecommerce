@@ -1,13 +1,21 @@
+import { doc, deleteDoc } from 'firebase/firestore'
 import React from "react"
 import { Col, Container, Row } from "reactstrap"
+import { db } from '../firebase.config'
 import useGetData from "../custom-hooks/useGetData"
 import styles from "./css/allProduct.module.css"
+import { toast } from 'react-toastify'
 
 const AllProducts = () => {
   const { data: productsData, loading } = useGetData("product")
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className="py-5">Loading...</div>
+  }
+
+  const deleteProduct = async (id) => {
+    await deleteDoc(doc(db, "products", id))
+    toast.success('Product deleted successfully')
   }
 
   return (
@@ -35,7 +43,12 @@ const AllProducts = () => {
                     <td>{item.category}</td>
                     <td>${item.price}</td>
                     <td>
-                      <button className="btn btn-danger">Delete</button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {deleteProduct(item.id)}}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}

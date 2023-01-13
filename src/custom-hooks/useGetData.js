@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore"
+import { collection, onSnapshot } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../firebase.config"
 
@@ -9,7 +9,8 @@ const useGetData = (collectionName) => {
 
   useEffect(() => {
     const getData = async () => {
-      const { docs } = await getDocs(collectionRef)
+      // ==== firebase firestore realtime data update =====
+      const { docs } = await onSnapshot(collectionRef)
       const mappedDocs = docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       setData(mappedDocs)
     }
