@@ -1,13 +1,13 @@
 import { doc, deleteDoc } from 'firebase/firestore'
+import { db } from '../firebase.config'
 import React from "react"
 import { Col, Container, Row } from "reactstrap"
-import { db } from '../firebase.config'
 import useGetData from "../custom-hooks/useGetData"
 import styles from "./css/allProduct.module.css"
 import { toast } from 'react-toastify'
 
 const AllProducts = () => {
-  const { data: productsData, loading } = useGetData("product")
+  const { data: productsData, loading } = useGetData("products")
 
   if (loading) {
     return <div className="py-5">Loading...</div>
