@@ -24,7 +24,7 @@ const AddProducts = () => {
 
     // ===== Add product to the firebase database ====
     try {
-      const docRef = collection(db, "product")
+      const docRef = collection(db, "products")
       const storageRef = ref(
         storage,
         `productImages/${Date.now() + enterProductImg.name}`
@@ -32,22 +32,28 @@ const AddProducts = () => {
       const uploadTask = uploadBytesResumable(storageRef, enterProductImg)
 
       uploadTask.on(
+        "state_changed",
+        (snapshot) => snapshot,
         () => {
           toast.error("Image not uploaded")
         },
         async () => {
-          const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref)
+          try {
+            const downloadUrl = await getDownloadURL(storageRef)
 
-          const result = await addDoc(docRef, {
-            title: enterTitle,
-            shortDesc: enterShortDesc,
-            description: enterDescription,
-            category: enterCategory,
-            price: enterPrice,
-            imgUrl: downloadUrl,
-          })
+            const result = await addDoc(docRef, {
+              title: enterTitle,
+              shortDesc: enterShortDesc,
+              description: enterDescription,
+              category: enterCategory,
+              price: enterPrice,
+              imgUrl: downloadUrl,
+            })
 
-          return result
+            return result
+          } catch (error) {
+            console.error(error)
+          }
         }
       )
 
@@ -57,6 +63,7 @@ const AddProducts = () => {
     } catch (err) {
       setLoading(false)
       toast.error("Product not added!")
+      console.error(err)
     }
   }
 

@@ -24,8 +24,8 @@ const adminNav = [
 ]
 
 const AdminNav = () => {
-
   const { currentUser } = useAuth();
+  if (!currentUser) return <div>Loading...</div>
 
   return (
     <>
