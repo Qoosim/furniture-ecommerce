@@ -7,7 +7,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/eco-logo.png';
 import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
-import useAuth from '../../custom-hooks/useAuth';
+import useAuth from '../../custom-hooks/useAuth'; 
 import { toast } from 'react-toastify';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
@@ -130,7 +130,7 @@ const Header = () => {
             </div>
           </div>
         </Row>
-      </Container>
+      </Container> 
     </header>
   )
 }
