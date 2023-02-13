@@ -1,0 +1,42 @@
+.revenueBox,
+.orderBox,
+.productsBox,
+.usersBox {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.revenueBox {
+    background: var(--card-bg-01);
+}
+
+.orderBox {
+    background: var(--card-bg-04);
+}
+
+.productsBox {
+    background: var(--card-bg-03);
+}
+
+.usersBox {
+    background: var(--card-bg-04);
+}
+
+.revenueBox h5,
+.orderBox h5,
+.productsBox h5,
+.usersBox h5 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.revenueBox span,
+.orderBox span,
+.productsBox span,
+.usersBox span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}

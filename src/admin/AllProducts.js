@@ -27,7 +27,7 @@ const AllProducts = () => {
               <thead>
                 <tr>
                   <th>Image</th>
-                  <th>Title</th>
+                  <th>Name</th>
                   <th>Category</th>
                   <th>Price</th>
                   <th>Action</th>
@@ -37,12 +37,12 @@ const AllProducts = () => {
                 {productsData.map((item) => (
                   <tr className={styles.productRow} key={item.id}>
                     <td>
-                      <img src={item.imgUrl} alt={item.title} />
+                      <img src={item.imgUrl} alt={item.productName} />
                     </td>
-                    <td>{item.title}</td>
+                    <td>{item.productName}</td>
                     <td>{item.category}</td>
                     <td>${item.price}</td>
-                    <td>
+                    <td> 
                       <button
                         className="btn btn-danger"
                         onClick={() => {deleteProduct(item.id)}}

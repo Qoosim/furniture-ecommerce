@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import styles from './css/adminNav.module.css';
 import useAuth from '../custom-hooks/useAuth';
 import { NavLink } from 'react-router-dom';
@@ -43,7 +43,7 @@ const AdminNav = () => {
               <div className={styles.adminNavTopRight}>
                 <span><i className="ri-notification-3-line"></i></span>
                 <span><i className="ri-settings-2-line"></i></span>
-                <img src={currentUser.photoURL} alt="User Avatar" />
+                <img src={currentUser && currentUser.photoURL} alt="User Avatar" />
               </div>
             </div>
           </Container>

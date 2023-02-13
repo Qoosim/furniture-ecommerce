@@ -1,36 +1,58 @@
-import { motion } from "framer-motion"
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { Col, Container, Row } from "reactstrap"
-import products from "../assets/data/products"
-import serviceData from "../assets/data/serviceData"
-import counterImg from "../assets/images/counter-timer-img.png"
-import heroImg from "../assets/images/hero-img.png"
-import Helmet from "../components/Helmet/Helmet"
-import Services from "../components/Services/Services"
-import Clock from "../components/UI/Clock"
-import ProductsList from "../components/UI/ProductsList"
-import styles from "../styles/home.module.css"
+import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Col, Container, Row } from "reactstrap";
+//import products from "../assets/data/products";
+import serviceData from "../assets/data/serviceData";
+import counterImg from "../assets/images/counter-timer-img.png";
+import heroImg from "../assets/images/hero-img.png";
+import Helmet from "../components/Helmet/Helmet";
+import Services from "../components/Services/Services";
+import Clock from "../components/UI/Clock";
+import ProductsList from "../components/UI/ProductsList";
+import styles from "../styles/home.module.css";
+import useGetData from "../custom-hooks/useGetData";
 
 const Home = () => {
-  // TODO: Extract filtering into util function
-  const [trendingProducts, setTrendingProducts] = useState(
-    products.filter((item) => item.category === "chair")
-  )
-  const [bestSalesProducts, setBestSalesProducts] = useState(
-    products.filter((item) => item.category === "sofa")
-  )
-  const [mobileProducts, setMobileProducts] = useState(
-    products.filter((item) => item.category === "mobile")
-  )
-  const [wirelessProducts, setWirelessProducts] = useState(
-    products.filter((item) => item.category === "wireless")
-  )
-  const [popularProducts, setPopularProducts] = useState(
-    products.filter((item) => item.category === "watch")
-  )
+  const { data: products, loading } = useGetData("products");
+  console.log(products);
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
+  const [wirelessProducts, setWirelessProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
 
-  const year = new Date().getFullYear()
+  useEffect(() => {
+    const filteredTrendingProducts = products.filter((item) => item.category === "chair");
+    const filteredBestProducts = products.filter((item) => item.category === "sofa");
+    const filteredMobileProducts = products.filter((item) => item.category === "mobile");
+    const filteredWirelessProducts = products.filter((item) => item.category === "wireless");
+    const filteredPopularProducts = products.filter((item) => item.category === "watch");
+
+    setTrendingProducts(filteredTrendingProducts);
+    setBestSalesProducts(filteredBestProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWirelessProducts);
+    setPopularProducts(filteredPopularProducts);
+  }, [products])
+  // TODO: Extract filtering into util function
+  // const [trendingProducts, setTrendingProducts] = useState(
+  //   products.filter((item) => item.category === "chair")
+  // );
+  // const [bestSalesProducts, setBestSalesProducts] = useState(
+  //   products.filter((item) => item.category === "sofa")
+  // );
+  // const [mobileProducts, setMobileProducts] = useState(
+  //   products.filter((item) => item.category === "mobile")
+  // );
+  // const [wirelessProducts, setWirelessProducts] = useState(
+  //   products.filter((item) => item.category === "wireless")
+  // );
+  // const [popularProducts, setPopularProducts] = useState(
+  //   products.filter((item) => item.category === "watch")
+  // );
+
+  const year = new Date().getFullYear();
 
   return (
     <Helmet title="Home">
@@ -71,7 +93,11 @@ const Home = () => {
             <Col lg="12" className={`text-center`}>
               <h2 className={styles.sectionTitle}>Trending Products</h2>
             </Col>
-            <ProductsList products={trendingProducts} />
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductsList products={trendingProducts} />
+            )}
           </Row>
         </Container>
       </section>
@@ -81,7 +107,11 @@ const Home = () => {
             <Col lg="12" className={`text-center`}>
               <h2 className={styles.sectionTitle}>Best Sales</h2>
             </Col>
-            <ProductsList products={bestSalesProducts} />
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductsList products={bestSalesProducts} />
+            )}
           </Row>
         </Container>
       </section>
@@ -113,8 +143,16 @@ const Home = () => {
             <Col lg="12" className={`text-center mb-5`}>
               <h2 className={styles.sectionTitle}>New Arrival</h2>
             </Col>
-            <ProductsList products={mobileProducts} />
-            <ProductsList products={wirelessProducts} />
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductsList products={mobileProducts} />
+            )}
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductsList products={wirelessProducts} />
+            )}
           </Row>
         </Container>
       </section>
@@ -124,12 +162,16 @@ const Home = () => {
             <Col lg="12" className={`text-center mb-5`}>
               <h2 className={styles.sectionTitle}>Popular in Category</h2>
             </Col>
-            <ProductsList products={popularProducts} />
+            {loading ? (
+              <h5 className="fw-bold">Loading...</h5>
+            ) : (
+              <ProductsList products={popularProducts} />
+            )}
           </Row>
         </Container>
       </section>
     </Helmet>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

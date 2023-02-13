@@ -8,7 +8,7 @@ import { db, storage } from "../firebase.config"
 import styles from "./css/addProducts.module.css"
 
 const AddProducts = () => {
-  const [enterTitle, setEnterTitle] = useState("")
+  const [enterName, setEnterName] = useState("")
   const [enterShortDesc, setEnterShortDesc] = useState("")
   const [enterDescription, setEnterDescription] = useState("")
   const [enterCategory, setEnterCategory] = useState("")
@@ -42,7 +42,7 @@ const AddProducts = () => {
             const downloadUrl = await getDownloadURL(storageRef)
 
             const result = await addDoc(docRef, {
-              title: enterTitle,
+              productName: enterName,
               shortDesc: enterShortDesc,
               description: enterDescription,
               category: enterCategory,
@@ -79,12 +79,12 @@ const AddProducts = () => {
                 <h4 className="mb-5">Add Product</h4>
                 <Form onSubmit={addProduct}>
                   <FormGroup className={styles.formGroup}>
-                    <span>Product title</span>
+                    <span>Product Name</span>
                     <input
                       type="text"
                       placeholder="Title"
-                      value={enterTitle}
-                      onChange={(e) => setEnterTitle(e.target.value)}
+                      value={enterName}
+                      onChange={(e) => setEnterName(e.target.value)}
                       required
                     />
                   </FormGroup>
@@ -126,6 +126,7 @@ const AddProducts = () => {
                         value={enterCategory}
                         onChange={(e) => setEnterCategory(e.target.value)}
                       >
+                        <option>Select category</option>
                         <option value="chair">Chair</option>
                         <option value="sofa">Sofa</option>
                         <option value="mobile">Mobile</option>

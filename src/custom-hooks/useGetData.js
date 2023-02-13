@@ -10,7 +10,7 @@ const useGetData = (collectionName) => {
     [collectionName]
   )
 
-  const getData = useCallback(async () => {
+  const getData = useCallback(() => {
     // ==== firebase firestore realtime data update =====
     onSnapshot(collectionRef, (snapshot) => {
       const { docs } = snapshot
