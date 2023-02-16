@@ -21,6 +21,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [tab, setTab] = useState("desc");
   const [setRating] = useState(null);
+  const [ loading, setLoading] = useState(true);
 
   const reviewUser = useRef("");
   const reviewMsg = useRef("");
@@ -34,9 +35,11 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const getProduct = async () => {
+      setLoading(true);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setProduct(docSnap.data());
+        setLoading(false);
       } else {
         console.log("No product!");
       }
@@ -78,6 +81,10 @@ const ProductDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [product]);
+
+  if (loading) {
+    return <h4>loading</h4>
+  }
 
   return (
     <Helmet title={productName}>
