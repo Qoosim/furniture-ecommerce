@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./header.module.css";
 import { motion } from "framer-motion";
@@ -117,13 +117,12 @@ const Header = () => {
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (
-                    <span onClick={logout}>Logout</span>
+                    <div className="d-flex align-items-start justify-content-center flex-column gap-1"> 
+                      <span onClick={logout}>Logout</span>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </div>
                   ) : (
-                    <div
-                      className={`
-                        d-flex align-items-center justify-content-center flex-column
-                      `}
-                    >
+                    <div className="d-flex align-items-start justify-content-center flex-column gap-1">
                       <Link to="/signup">Sign up</Link>
                       <Link to="/login">Login</Link>
                       <Link to="/dashboard">Dashboard</Link>

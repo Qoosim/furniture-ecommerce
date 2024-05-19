@@ -10,6 +10,10 @@ const adminNav = [
     path: '/dashboard'
   },
   {
+    display: 'Add Product',
+    path: 'dashboard/add-products'
+  },
+  {
     display: 'All-Products',
     path: '/dashboard/all-products'
   },

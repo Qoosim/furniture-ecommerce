@@ -15,28 +15,28 @@ const Shop = () => {
     const filteredValue = e.target.value;
 
     if (filteredValue === 'sofa') {
-      const filteredProducts = productsData.filter(
+      const filteredProducts = products.filter(
         (product) => product.category === 'sofa'
       );
       setProductsData(filteredProducts);
     }
 
     if (filteredValue === 'mobile') {
-      const filteredProducts = productsData.filter(
+      const filteredProducts = products.filter(
         (product) => product.category === 'mobile'
       );
       setProductsData(filteredProducts);
     }
 
     if (filteredValue === 'watch') {
-      const filteredProducts = productsData.filter(
+      const filteredProducts = products.filter(
         (product) => product.category === 'watch'
       );
       setProductsData(filteredProducts);
     }
 
     if (filteredValue === 'wireless') {
-      const filteredProducts = productsData.filter(
+      const filteredProducts = products.filter(
         (product) => product.category === 'wireless'
       );
       setProductsData(filteredProducts);
